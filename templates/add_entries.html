@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block body %}
+  {% if session.logged_in %}
+    <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+    <p>Complete the fields and click 'Save'.  Or, click 'Cancel' to go back.</p>
+    <table>
+      <tr>
+        <td>Donor Name:</td><td><input type=text size=30 name=donorname></td>
+      </tr>
+      <tr>
+        <td>Donor Classification:</td><td><input type=text size=30 name=donorclass></td>
+      </tr>
+      <tr>
+        <td>Solicitor Name:</td><td><input type=text size=30 name=solicname></td>
+      </tr>
+      <tr>
+        <td>Solicitor EMail:</td><td><input type=text size=30 name=solicemail></td>
+      </tr>
+      <tr>
+        <td>Solicitor Phone:</td><td><input type=text size=30 name=solicphone></td>
+      </tr>
+    </table>
+	<br/>
+        <input type=submit name="save_button" value=Save>&nbsp;<input type=submit name="cancel_button" value=Cancel>
+    </form>
+    <br/>
+  {% endif %}
+{% endblock %}

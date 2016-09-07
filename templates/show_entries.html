@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if session.logged_in %}
+  <h2>Search for Merchant Donor status</h2>
+  <form id="searchform" method="POST" action="{{ url_for('show_entries') }}">
+  <p>
+    Enter Business or Prospect name: <input id="searchName" name="searchName" type=text value="{{searchdefault}}" autofocus="autofocus">
+    <input type="submit" name="search_button" value="Search">&nbsp;
+    <input type="submit" name="showall_button" value="Show All">
+  </p>
+  </form>
+  {% if numentries > 0 %}
+    <table>
+    <tr>
+      <th>Donor Name</th>
+      <th>Donor Class</th>
+      <th>Solicitor Name</th>
+      <th>Solicitor Phone</th>
+      <th>Solicitor Phone</th>
+    </tr>
+    {% for entry in entries %}
+      <tr>
+        <td>{{ entry[0] }}</td>
+        <td>{{ entry[1]|safe }}</td>
+        <td>{{ entry[2]|safe }}</td>
+        <td>{{ entry[3]|safe }}</td>
+        <td>{{ entry[4]|safe }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+  {% else %}
+    <em>No entries match.</em>
+  {% endif %}
+  <p><a href="/add-entry">Click to add a new entry</a></p>
+{% endif %}
+
+{% endblock %}
