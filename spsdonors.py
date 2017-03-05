@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, \
      abort, render_template, flash
@@ -114,5 +116,5 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.2.127',debug='TRUE')
+    app.run(host='192.168.2.127', port=int("5100"), debug='TRUE')
 
